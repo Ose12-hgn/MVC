@@ -70,6 +70,12 @@ function getAllEmployees(){
 //DELETE - OFFICE
 function deleteOffice($office_index){
     unset($_SESSION['officelist'][$office_index]); // array index 0 1 2
+    getAllEmployees();
+    foreach($_SESSION['employeelist'] as $employee){
+        if($employee->office_id == $office_index){
+            $employee->office_id = "";
+        }
+    }
 }
 
 function getAllOffices(){
